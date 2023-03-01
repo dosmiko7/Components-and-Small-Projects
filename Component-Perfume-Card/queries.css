@@ -1,0 +1,25 @@
+/************************************/
+/* BELOW 800px                      */
+/************************************/
+@media (max-width: 50em) {
+    .product-preview {
+        flex-direction: column;
+        height: 100rem;
+        width: 50rem;
+    }
+
+    .product-img_box {
+        background-image: url("images/image-product-mobile.jpg");
+        height: 50rem;
+        width: 50rem;
+    }
+
+    .product-description {
+        width: 50rem;
+        padding: 3.2rem;
+    }
+    
+    .add_to_cart {
+        width: 100%;
+    }
+}
