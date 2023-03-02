@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/style.css">
+  
+  <title>E-commerce product page</title>
+
+</head>
+<body>
+  <header>
+    <img class="logo" src="images/logo.svg" alt="Logo of Sneakers">
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <li ><a class="main-nav-link" href="#">Collections</a></li>
+        <li ><a class="main-nav-link" href="#">Men</a></li>
+        <li ><a class="main-nav-link" href="#">Women</a></li>
+        <li ><a class="main-nav-link" href="#">About</a></li>
+        <li ><a class="main-nav-link" href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <img class="header-shopcart" src="images/icon-cart.svg" alt="Image of shop cart">
+    <div class="shopping-cart-content">
+      <div class="content-header">
+        <h2 class="content-heading">Cart</h2>
+      </div>
+      <div class="content-current">
+        <p class="content-empty">Your cart is empty.</p>
+      </div>
+    </div>
+    <img class="header-avatar" src="images/image-avatar.png" alt="Profile photo">
+  </header>
+
+  <main>
+    <section class="section-preview">
+      <div class="preview-product--images">
+        <img class="preview-actual--image" src="images/image-product-1.jpg" alt="First photo of Sneakers shoes">
+        <div class="preview-thumbnails">
+          <img class="thumbnail active" src="images/image-product-1-thumbnail.jpg" alt="First thumbnail of product image">
+          <div class="thumbnail-img-box"><img class="thumbnail" src="images/image-product-2-thumbnail.jpg" alt="Second thumbnail of product image"></div>
+          <div class="thumbnail-img-box"><img class="thumbnail" src="images/image-product-3-thumbnail.jpg" alt="Third thumbnail of product image"></div>
+          <div class="thumbnail-img-box"><img class="thumbnail" src="images/image-product-4-thumbnail.jpg" alt="Fourth thumbnail of product image"></div>
+        </div>
+      </div>
+      <div class="preview-product--text">
+        <h2 class="heading-company--name">Sneaker Company</h2>
+
+        <h1 class="heading-product--name">Fall Limited Edition Sneakers</h1>
+
+        <p class="product-description">
+          These low-profile sneakers are your perfect casual wear companion. Featuring a
+          durable rubber outer sole, they’ll withstand everything the weather can offer.
+        </p>
+
+        <div class="product-prices">
+          <strong class="price product-current--price">$125.00</strong>
+          <strong class="product-discount">50%</strong>
+          <strong class="price product-previous-price">$250.00</strong>
+        </div>
+
+        <div class="product-purchasing">
+          <div class="product-counting">
+            <button class="btn product-reduce--quantity"></button>
+            <span class="product-current--quantity">0</span>
+            <button class="btn product-increase--quantity" aria-label="Plus symbol for increase amount of product"></button>
+          </div>
+          <button class="btn add-to-cart"><img class="purchasing-shopcart" src="images/icon-cart.svg" alt="Shop cart icon">Add to cart</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
