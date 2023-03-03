@@ -22,3 +22,16 @@ body {
 .btn:hover {
     cursor: pointer;
 }
+
+.main-button {
+    border-radius: 10px;
+    background-color: hsl(26, 100%, 55%);
+    color: hsl(0, 0%, 100%);
+    font-size: 1.6rem;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.main-button:hover {
+    filter: opacity(60%);
+}
