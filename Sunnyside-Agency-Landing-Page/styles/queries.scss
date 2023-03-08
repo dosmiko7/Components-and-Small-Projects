@@ -1,0 +1,132 @@
+/************************************/
+/* BELOW 1472px                     */
+/************************************/
+@media (max-width: 92em) {
+  body {
+    max-width: 147.1rem;
+  }
+
+  .section-about {
+
+    .container {
+      height: 65rem;
+
+      .container-t--content {
+        padding: 8.1rem;
+
+        .container-t--heading {
+          font-size: 6rem;
+        }
+      }
+
+      .container-ti--content {
+        padding: 7.2rem;
+      }
+    }
+  }
+}
+
+/************************************/
+/* BELOW 1248px                     */
+/************************************/
+@media (max-width: 78em){
+  html {
+    font-size: 56.5%;
+  }
+}
+
+/************************************/
+/* BELOW 1088px                     */
+/************************************/
+@media (max-width: 68em) {
+  html {
+    font-size: 52%;
+  }
+
+  .container-ti--content {
+    padding: 5.4rem;
+  }
+}
+
+/************************************/
+/* BELOW 928px                     */
+/************************************/
+@media (max-width: 68em) {
+  html {
+    font-size: 50%;
+  }
+
+  .starting-page {
+    .section-hero {
+      padding-top: 3.6rem;
+      .hero--title {
+        font-size: 5.4rem;
+      }
+    }
+  }
+
+  .section-about {
+    .container {
+      height: 50rem;
+      .container-t--content {
+        .container-t--heading {
+          font-size: 3.6rem;
+        }
+      }
+    }
+  }
+  .container-ti--content {
+    padding: 1.8rem !important;
+  }
+
+  .section-about {
+    .container {
+      .container-ti--content {
+        padding: 6.6rem;
+      }
+    }
+  }
+
+  .section-testimonials {
+    padding: 5.4rem;
+    row-gap: 1.8rem;
+    .testimonials-title {
+      align-self: center;
+    }
+  }
+}
+
+/************************************/
+/* BELOW 752px                      */
+/************************************/
+@media (max-width: 47em) {
+  html {
+    font-size: 42%;
+  }
+
+  .container {
+    .container-t--content {
+      padding: 3.6rem !important;
+    }
+  }
+
+  .header {
+    .main-nav {
+      .main-nav--list {
+        gap: 0 !important;
+      }
+    }
+  }
+}
+/************************************/
+/* BELOW 528px                      */
+/************************************/
+@media (max-width: 33em) {
+  .starting-page {
+    .section-hero {
+      .hero--title {
+        font-size: 4.8rem;
+      }
+    }
+  }
+}
