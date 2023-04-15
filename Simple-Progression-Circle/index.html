@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Progression Bar - Mikołaj Oberda</title>
+
+		<style>
+			:root {
+				--progression-color: brown;
+				--background-color: antiquewhite;
+			}
+
+			body {
+				background-color: black;
+			}
+
+			.container {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 400px;
+				height: 400px;
+				background-color: var(--background-color);
+				border-radius: 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.progression-circle {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+
+				/* Progression bar */
+				background: conic-gradient(var(--progression-color) 3deg, var(--background-color) 0deg);
+
+				animation: animation 10s forwards infinite alternate;
+			}
+
+			/* Hidding center of the background property */
+			.progression-circle::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 160px;
+				height: 160px;
+				border-radius: 50%;
+				background-color: var(--background-color);
+			}
+
+			/* Animation */
+			@keyframes animation {
+				0% {
+					background: conic-gradient(var(--progression-color) 0deg, var(--background-color) 0deg);
+				}
+
+				10% {
+					background: conic-gradient(var(--progression-color) 36deg, var(--background-color) 0deg);
+				}
+
+				20% {
+					background: conic-gradient(var(--progression-color) 72deg, var(--background-color) 0deg);
+				}
+
+				30% {
+					background: conic-gradient(var(--progression-color) 108deg, var(--background-color) 0deg);
+				}
+
+				40% {
+					background: conic-gradient(var(--progression-color) 144deg, var(--background-color) 0deg);
+				}
+
+				50% {
+					background: conic-gradient(var(--progression-color) 180deg, var(--background-color) 0deg);
+				}
+
+				60% {
+					background: conic-gradient(var(--progression-color) 216deg, var(--background-color) 0deg);
+				}
+
+				70% {
+					background: conic-gradient(var(--progression-color) 252deg, var(--background-color) 0deg);
+				}
+
+				80% {
+					background: conic-gradient(var(--progression-color) 288deg, var(--background-color) 0deg);
+				}
+
+				90% {
+					background: conic-gradient(var(--progression-color) 324deg, var(--background-color) 0deg);
+				}
+
+				100% {
+					background: conic-gradient(var(--progression-color) 360deg, var(--background-color) 0deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="progression-circle"></div>
+		</div>
+	</body>
+</html>
