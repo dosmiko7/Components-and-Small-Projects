@@ -15,30 +15,42 @@ const Counter = () => {
 
 	// React Redux will automatically set up a subscription to Redux Store
 	const counter = useSelector((state) => state.counter);
+	const show = useSelector((state) => state.showCounter);
+
+	// Normally we should use here useState because every actions refer only to this component and there is no need to transfer them to an external storage guaranteed by Redux
 
 	// Functions which define what action we want make in our store reducer function
 	const incrementHandler = () => {
 		dispatch({ type: "INCREMENT" });
 	};
 
+	const increaseHandler = () => {
+		dispatch({ type: "INCREASE", amount: 5 });
+	};
+
 	const decrementHandler = () => {
 		dispatch({ type: "DECREMENT" });
 	};
 
-	const toggleCounterHandler = () => {};
+	const toggleCounterHandler = () => {
+		dispatch({ type: "TOGGLE" });
+	};
 
 	return (
 		<main className={classes.counter}>
 			<h1>Redux Counter</h1>
-			<div className={classes.value}>{counter}</div>
+			{show && <div className={classes.value}>{counter}</div>}
 			<div>
 				<button onClick={incrementHandler}>Increment</button>
+				<button onClick={increaseHandler}>Increase by 5</button>
 				<button onClick={decrementHandler}>Decrement</button>
 			</div>
 			<button onClick={toggleCounterHandler}>Toggle Counter</button>
 		</main>
 	);
 };
+
+export default Counter;
 
 // CLASS APROACH
 // class CounterC extends Component {
@@ -85,5 +97,3 @@ const Counter = () => {
 
 // // Functions arguments for connect will be executed by React Redux
 // export default connect(mapStateToProps, mapDispatchToProps)(CounterC);
-
-export default Counter;
