@@ -1,11 +1,13 @@
 // Component and connect imports are for class
 //import { Component } from "react";
 //import { conntect } from "react-redux"
+// useSelector allows us to automatically select a part of state managed by the store
 import { useSelector, useDispatch } from "react-redux";
 
-// useSelector allows us to automatically select a part of state managed by the store
-
 import classes from "./Counter.module.css";
+
+// We import every actions from our counterSlice
+import { counterActions } from "../store/index";
 
 const Counter = () => {
 	// useDispatch allows us to dispatch action against our Redux Store
@@ -20,20 +22,36 @@ const Counter = () => {
 	// Normally we should use here useState because every actions refer only to this component and there is no need to transfer them to an external storage guaranteed by Redux
 
 	// Functions which define what action we want make in our store reducer function
-	const incrementHandler = () => {
-		dispatch({ type: "INCREMENT" });
-	};
+	// // For Redux:
+	// const incrementHandler = () => {
+	// 	dispatch({ type: "INCREMENT" });
+	// };
+	// const increaseHandler = () => {
+	// 	dispatch({ type: "INCREASE", amount: 5 });
+	// };
 
+	// const decrementHandler = () => {
+	// 	dispatch({ type: "DECREMENT" });
+	// };
+
+	// const toggleCounterHandler = () => {
+	// 	dispatch({ type: "TOGGLE" });
+	// };
+
+	// For Redux Toolkit after import types of actions
+	const incrementHandler = () => {
+		dispatch(counterActions.increment());
+	};
 	const increaseHandler = () => {
-		dispatch({ type: "INCREASE", amount: 5 });
+		dispatch(counterActions.increase(5));
 	};
 
 	const decrementHandler = () => {
-		dispatch({ type: "DECREMENT" });
+		dispatch(counterActions.decrement());
 	};
 
 	const toggleCounterHandler = () => {
-		dispatch({ type: "TOGGLE" });
+		dispatch(counterActions.toogleCounter());
 	};
 
 	return (
