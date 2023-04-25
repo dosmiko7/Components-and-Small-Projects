@@ -23,16 +23,19 @@ const counterReducer = (state = { counter: 0 }, action) => {
 
 const store = redux.createStore(counterReducer);
 
+// What Subsriber does
 const counterSubscriber = () => {
 	// Method available on the store. Give us the latest state snapshot after the change
 	const latestState = store.getState();
 	console.log(latestState);
 };
 
+// Every time when state (store) is changing - subscriber (in counterSubscriber) get info
 store.subscribe(counterSubscriber);
 
 // Without dispatch counterSubsriber will not run. We need send action.
 
 // Action is a type of object in JS, with type (kind of identifier)
+//
 store.dispatch({ type: "increment" });
 store.dispatch({ type: "decrement" });
