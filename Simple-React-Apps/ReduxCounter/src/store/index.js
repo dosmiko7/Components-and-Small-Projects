@@ -2,7 +2,7 @@ import { createStore } from "redux";
 // configureStore helps us manage slices.
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const inititalState = {
+const inititalCounterState = {
 	counter: 0,
 	showCounter: true,
 };
@@ -10,7 +10,7 @@ const inititalState = {
 // createSlice preparing slice of our global state
 const counterSlice = createSlice({
 	name: "counter",
-	initialState: inititalState,
+	initialState: inititalCounterState,
 	// Reducers is an object, a map of all the reducers this slice needs
 	reducers: {
 		// Inside these functions we can mute our state. Behind the scene Redux Tooltip copies state and make a new one
@@ -27,6 +27,24 @@ const counterSlice = createSlice({
 		},
 		toogleCounter(state) {
 			state.showCounter = !state.showCounter;
+		},
+	},
+});
+
+const initialAuthState = {
+	isAuthenticated: false,
+};
+
+// Adding second slice
+const authSlice = createSlice({
+	name: "auth",
+	initialState: initialAuthState,
+	reducers: {
+		login(state) {
+			state.isAuthenticated = true;
+		},
+		logout(state) {
+			state.isAuthenticated = false;
 		},
 	},
 });
@@ -77,9 +95,13 @@ const counterSlice = createSlice({
 const store = configureStore({
 	// For bigger projects where we have more than one reducer (redux merge them):
 	// reducer: {counter: counterSlice.reducer, ...}
-	reducer: counterSlice.reducer,
+	reducer: {
+		counter: counterSlice.reducer,
+		auth: authSlice.reducer,
+	},
 });
 
 // For configureStore: we need keys for actions to know what we need to do. counterActions makes object with unique id for every action
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 export default store;

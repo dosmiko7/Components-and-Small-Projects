@@ -16,8 +16,9 @@ const Counter = () => {
 	// To useSelector we need pass a function which will be executed by a React Redux. Determines which piece of data we wanna extract from our store. In our example we have only counter
 
 	// React Redux will automatically set up a subscription to Redux Store
-	const counter = useSelector((state) => state.counter);
-	const show = useSelector((state) => state.showCounter);
+	// After adding second createSlice in our Redux store, we need use properties from configureStore, so for example: state.counter.counter
+	const counter = useSelector((state) => state.counter.counter);
+	const show = useSelector((state) => state.counter.showCounter);
 
 	// Normally we should use here useState because every actions refer only to this component and there is no need to transfer them to an external storage guaranteed by Redux
 
