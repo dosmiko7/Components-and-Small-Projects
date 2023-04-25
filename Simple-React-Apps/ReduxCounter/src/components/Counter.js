@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import classes from "./Counter.module.css";
 
 // We import every actions from our counterSlice
-import { counterActions } from "../store/index";
+import { counterActions } from "../store/counter";
 
 const Counter = () => {
 	// useDispatch allows us to dispatch action against our Redux Store

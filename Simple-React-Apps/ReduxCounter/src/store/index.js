@@ -1,55 +1,17 @@
-import { createStore } from "redux";
+// import { createStore } from "redux";
 // configureStore helps us manage slices.
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
-const inititalCounterState = {
-	counter: 0,
-	showCounter: true,
-};
+// After moving slices to separate files we need to import them here
+import counterSlice from "./counter";
+// We can import whole slice or only reducer
+import authReducer from "./auth";
 
-// createSlice preparing slice of our global state
-const counterSlice = createSlice({
-	name: "counter",
-	initialState: inititalCounterState,
-	// Reducers is an object, a map of all the reducers this slice needs
-	reducers: {
-		// Inside these functions we can mute our state. Behind the scene Redux Tooltip copies state and make a new one
-		increment(state) {
-			state.counter++;
-		},
-		decrement(state) {
-			state.counter--;
-		},
-		increase(state, action) {
-			// We need change action.amount to action.payload because it is default property
-			// state.counter = state.counter + action.amount;
-			state.counter = state.counter + action.payload;
-		},
-		toogleCounter(state) {
-			state.showCounter = !state.showCounter;
-		},
-	},
-});
+// First slice moved to counter.js
 
-const initialAuthState = {
-	isAuthenticated: false,
-};
+// Second slice moved to auth.js
 
-// Adding second slice
-const authSlice = createSlice({
-	name: "auth",
-	initialState: initialAuthState,
-	reducers: {
-		login(state) {
-			state.isAuthenticated = true;
-		},
-		logout(state) {
-			state.isAuthenticated = false;
-		},
-	},
-});
-
-// // After making a createSlice we can comment this code
+// // After making a createSlice we can comment this code because we are using Toolkit now.
 // const counterReducer = (state = inititalState, action) => {
 // 	// We need always set all the other states. Even if we are changing only counter, we need also set showCounter state
 
@@ -97,11 +59,12 @@ const store = configureStore({
 	// reducer: {counter: counterSlice.reducer, ...}
 	reducer: {
 		counter: counterSlice.reducer,
-		auth: authSlice.reducer,
+		auth: authReducer,
 	},
 });
 
 // For configureStore: we need keys for actions to know what we need to do. counterActions makes object with unique id for every action
-export const counterActions = counterSlice.actions;
-export const authActions = authSlice.actions;
+// After moved slices to separate files, exports also are moved there
+// export const counterActions = counterSlice.actions;
+// export const authActions = authSlice.actions;
 export default store;
