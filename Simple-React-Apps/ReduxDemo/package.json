@@ -1,0 +1,22 @@
+{
+  "name": "reduxdemo",
+  "version": "1.0.0",
+  "description": "Simple app to learn basics of Redux ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dosmiko7/Components-and-Small-Projects-tree/main/Simple-React-Apps/ReduxDemo"
+  },
+  "keywords": [
+    "React",
+    "Redux"
+  ],
+  "author": "dosmiko7",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.2.1"
+  }
+}
