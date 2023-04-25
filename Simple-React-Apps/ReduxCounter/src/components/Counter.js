@@ -1,3 +1,6 @@
+// Component and connect imports are for class
+//import { Component } from "react";
+//import { conntect } from "react-redux"
 import { useSelector, useDispatch } from "react-redux";
 
 // useSelector allows us to automatically select a part of state managed by the store
@@ -36,5 +39,51 @@ const Counter = () => {
 		</main>
 	);
 };
+
+// CLASS APROACH
+// class CounterC extends Component {
+// 	// mapStateToProps allows us to use props.increment
+// 	incrementHandler() {
+// 		this.props.increment();
+// 	}
+
+// 	decrementHandler() {
+// 		this.props.decrement();
+// 	}
+
+// 	toggleCounterHandler() {}
+
+// 	render() {
+// 		return (
+// 			<main className={classes.counter}>
+// 				<h1>Redux Counter</h1>
+// 				<div className={classes.value}>{this.props.counter}</div>
+// 				<div>
+// 					<button onClick={this.incrementHandler.bind(this)}>Increment</button>
+// 					<button onClick={this.decrementHandler.bind(this)}>Decrement</button>
+// 				</div>
+// 				<button onClick={this.toggleCounterHandler}>Toggle Counter</button>
+// 			</main>
+// 		);
+// 	}
+// }
+
+// // Map state to props. It allows us to use them in the class CounterC
+// const mapStateToProps = (state) => {
+// 	return {
+// 		counter: state.counter,
+// 	};
+// };
+
+// // It is like dispatch functions from "hook way"
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		increment: () => dispatch({ type: "INCREMENT" }),
+// 		decrement: () => dispatch({ type: "DECREMENT" }),
+// 	};
+// };
+
+// // Functions arguments for connect will be executed by React Redux
+// export default connect(mapStateToProps, mapDispatchToProps)(CounterC);
 
 export default Counter;
