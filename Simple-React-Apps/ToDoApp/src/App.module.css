@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap");
+
+.lists_container {
+	display: flex;
+	align-items: start;
+	gap: 2rem;
+	padding: 1rem;
+	margin-top: 1rem;
+}
+
+.form__container {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
