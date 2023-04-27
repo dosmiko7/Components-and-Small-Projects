@@ -1,0 +1,53 @@
+.container {
+	width: 50%;
+	background-color: rgb(235, 214, 187);
+	border-radius: 10px;
+}
+
+.title {
+	font-size: 3.6rem;
+	text-align: center;
+	font-family: "Caveat", cursive;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	font-size: 2rem;
+	list-style: none;
+	padding: 0;
+	margin: 1rem;
+	overflow: hidden;
+}
+
+.list__item {
+	display: flex;
+	background-color: rgb(214, 181, 137);
+	border-radius: 10px;
+	padding: 0.5rem;
+}
+
+.list__item div {
+	height: 100%;
+	width: 100%;
+	word-wrap: break-word;
+}
+
+.button {
+	margin-left: auto;
+	background-color: transparent;
+	outline: none;
+	border: none;
+
+	transition: all 0.4s;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: rgb(138, 132, 132, 0.7);
+}
+
+.button:active {
+	background-color: rgb(138, 132, 132, 1);
+}

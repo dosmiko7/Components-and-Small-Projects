@@ -1,0 +1,16 @@
+.container {
+	width: 60vw;
+	max-height: 80vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	border: 3px solid black;
+	border-radius: 10px;
+	padding: 2rem;
+	background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+
+	overflow: scroll;
+	overflow-x: hidden;
+}
