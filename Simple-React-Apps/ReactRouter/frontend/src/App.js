@@ -23,13 +23,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
-import EventsPage from "./pages/EventsPage";
+import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
 import EventDetailPage from "./pages/EventDetailPage";
 import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
-import EventsNavigation from "./components/EventsNavigation";
 import EventsRootLayout from "./pages/EventsRoot";
 
+// 1. "loader" in object with <EventsPage> allows us to to do sth before rendering a component. We're give a function which tells what we want to do/ In this example, we move fetch data from Events.js and paste it here.
+// loader's return will be available in <EventsPage> component
+// 2. In EventsPage.js
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -40,7 +42,21 @@ const router = createBrowserRouter([
 				path: "events",
 				element: <EventsRootLayout />,
 				children: [
-					{ index: true, element: <EventsPage /> },
+					{
+						index: true,
+						element: <EventsPage />,
+						// // 4.5 This code is moved to EventsPage.js
+						// loader: async () => {
+						// 	const response = await fetch("http://localhost:8080/events");
+						// 	if (!response.ok) {
+						// 		// ...
+						// 	} else {
+						// 		const resData = await response.json();
+						// 		return resData.events;
+						// 	}
+						// },
+						loader: eventsLoader,
+					},
 					{ path: ":eventId", element: <EventDetailPage /> },
 					{ path: "new", element: <NewEventPage /> },
 					{ path: ":eventId/edit", element: <EditEventPage /> },
