@@ -98,6 +98,7 @@ export default EventForm;
 // 20.1 We want to edit and add events via form. We need to change method in the Form from method="post" to method={method}. We need also update NewEventPage.js with <EventForm method="post" /> and in the EditEventPagee for <EventForm method="patch"
 // 20.2 Now we can extract the method in our action function and change url
 // 20.3 Update App.js: delete action's import from NewEventPage and add import action from EventForm.
+// 21. In NewsletterSign.js
 export const action = async ({ request, params }) => {
 	// Here we get method
 	const method = request.method;
