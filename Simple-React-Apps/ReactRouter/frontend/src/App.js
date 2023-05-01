@@ -3,7 +3,7 @@ import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
 import EventDetailPage, { loader as eventDetailLoader } from "./pages/EventDetailPage";
-import NewEventPage from "./pages/NewEventPage";
+import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/Error";
@@ -59,7 +59,8 @@ const router = createBrowserRouter([
 					// 12.6 Then we need back to our EventDetailPage.js and import useLoaderData hook
 					// // BEFORE 14.
 					// { path: ":eventId", element: <EventDetailPage />, loader: eventDetailLoader },
-					{ path: "new", element: <NewEventPage /> },
+					// 15.1 To use actions we need add proprty action which takes a function. These functions we want to add close to the components to which it belongs, so in NewEventPage.js (step 15.2)
+					{ path: "new", element: <NewEventPage />, action: newEventAction },
 					// // BEFORE 14.
 					// { path: ":eventId/edit", element: <EditEventPage /> },
 				],

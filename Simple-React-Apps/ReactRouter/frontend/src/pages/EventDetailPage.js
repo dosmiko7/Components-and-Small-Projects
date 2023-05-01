@@ -1,5 +1,6 @@
-import { json, useLoaderData, useRouteLoaderData } from "react-router-dom";
+import { json, useRouteLoaderData } from "react-router-dom";
 // import { useParams } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 
 import EventItem from "../components/EventItem";
 
