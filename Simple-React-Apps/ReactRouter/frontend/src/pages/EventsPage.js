@@ -1,5 +1,5 @@
 // 2. We are importing useLoaderData to get closest loaded data.
-import { useLoaderData } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 
 import EventsList from "../components/EventsList";
 
@@ -39,7 +39,10 @@ export const loader = async () => {
 		// throw { message: "Could not fetch events." };
 		// 9. Displaying kind of problem
 		// 9.5 in Error.js
-		throw new Response(JSON.stringify({ message: "Could not fetch events" }), { status: 500 });
+		// throw new Response(JSON.stringify({ message: "Could not fetch events" }), { status: 500 });
+		// 10. React Router gives us tool to do it more efficient. json() is a function that creates a response object that includes data in the json format.
+		// 11. After that we can change code in Error.js
+		return json({ message: "Could not fetch events." }, { status: 500 });
 	} else {
 		return response;
 	}

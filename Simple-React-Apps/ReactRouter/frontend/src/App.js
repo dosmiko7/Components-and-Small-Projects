@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
-import EventDetailPage from "./pages/EventDetailPage";
+import EventDetailPage, { loader as eventDetailLoader } from "./pages/EventDetailPage";
 import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
@@ -40,7 +40,9 @@ const router = createBrowserRouter([
 						// },
 						loader: eventsLoader,
 					},
-					{ path: ":eventId", element: <EventDetailPage /> },
+					// 12.4 So we need to add loader (before that import loader from EventDetailPage.js)
+					// 12.6 Then we need back to our EventDetailPage.js and import useLoaderData hook
+					{ path: ":eventId", element: <EventDetailPage />, loader: eventDetailLoader },
 					{ path: "new", element: <NewEventPage /> },
 					{ path: ":eventId/edit", element: <EditEventPage /> },
 				],
