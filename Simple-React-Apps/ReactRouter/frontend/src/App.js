@@ -8,6 +8,7 @@ import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/Error";
 import { action as manipulateEventAction } from "./components/EventForm";
+import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 
 // 1. "loader" in object with <EventsPage> allows us to to do sth before rendering a component. We're give a function which tells what we want to do/ In this example, we move fetch data from Events.js and paste it here.
 // loader's return will be available in <EventsPage> component
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
 					// // BEFORE 14.
 					// { path: ":eventId/edit", element: <EditEventPage /> },
 				],
+			},
+			{
+				path: "newsletter",
+				element: <NewsletterPage />,
+				action: newsletterAction,
 			},
 		],
 	},
