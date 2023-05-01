@@ -14,6 +14,7 @@ function EventItem({ event }) {
 			// 18.3.1 First argument is a data what we wanna submit
 			// Second argument is an object with properties which could we also add to Form
 			// method will be used in action function
+			// 18.4 In EventForm.js
 			submit(null, { method: "delete" });
 		} else {
 		}

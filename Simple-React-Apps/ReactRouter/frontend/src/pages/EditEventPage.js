@@ -16,7 +16,12 @@ const EditEventPage = () => {
 	// 15. In NewEventPage.js
 
 	// 14.6 Sending data to EventForm
-	return <EventForm event={event} />;
+	return (
+		<EventForm
+			method="patch"
+			event={event}
+		/>
+	);
 };
 
 export default EditEventPage;

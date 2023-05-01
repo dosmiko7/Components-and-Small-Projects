@@ -3,10 +3,11 @@ import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
 import EventDetailPage, { loader as eventDetailLoader, action as deleteEventAction } from "./pages/EventDetailPage";
-import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
+import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/Error";
+import { action as manipulateEventAction } from "./components/EventForm";
 
 // 1. "loader" in object with <EventsPage> allows us to to do sth before rendering a component. We're give a function which tells what we want to do/ In this example, we move fetch data from Events.js and paste it here.
 // loader's return will be available in <EventsPage> component
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
 								/* 18.2 Adding action. Firstly we need add action function to EventDetailPage.js and import that function. After that we can back to EventItem.js (18.3) */
 								action: deleteEventAction /* BEFORE 14: loader: eventDetailLoader */,
 							},
-							{ path: "edit", element: <EditEventPage /> },
+							{ path: "edit", element: <EditEventPage />, action: manipulateEventAction },
 						],
 					},
 
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
 					// // BEFORE 14.
 					// { path: ":eventId", element: <EventDetailPage />, loader: eventDetailLoader },
 					// 15.1 To use actions we need add proprty action which takes a function. These functions we want to add close to the components to which it belongs, so in NewEventPage.js (step 15.2)
-					{ path: "new", element: <NewEventPage />, action: newEventAction },
+					{ path: "new", element: <NewEventPage />, action: manipulateEventAction },
 					// // BEFORE 14.
 					// { path: ":eventId/edit", element: <EditEventPage /> },
 				],
