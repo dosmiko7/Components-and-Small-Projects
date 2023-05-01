@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
-import EventDetailPage, { loader as eventDetailLoader } from "./pages/EventDetailPage";
+import EventDetailPage, { loader as eventDetailLoader, action as deleteEventAction } from "./pages/EventDetailPage";
 import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
@@ -50,7 +50,12 @@ const router = createBrowserRouter([
 						// WITH 14:
 						loader: eventDetailLoader,
 						children: [
-							{ index: true, element: <EventDetailPage /> /* BEFORE 14: loader: eventDetailLoader */ },
+							{
+								index: true,
+								element: <EventDetailPage />,
+								/* 18.2 Adding action. Firstly we need add action function to EventDetailPage.js and import that function. After that we can back to EventItem.js (18.3) */
+								action: deleteEventAction /* BEFORE 14: loader: eventDetailLoader */,
+							},
 							{ path: "edit", element: <EditEventPage /> },
 						],
 					},

@@ -43,4 +43,5 @@ export const action = async ({ request, params }) => {
 	// 17. After submiting, user should be sent to other page.
 	// Redirect creates a respone object. We should pass the path to which you wanna redirect user
 	return redirect("/events");
+	// 18. In EventItem.js we'll add other way to handle submit
 };
