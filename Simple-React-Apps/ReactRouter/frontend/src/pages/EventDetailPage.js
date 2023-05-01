@@ -1,4 +1,4 @@
-import { json, useLoaderData } from "react-router-dom";
+import { json, useLoaderData, useRouteLoaderData } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 
 import EventItem from "../components/EventItem";
@@ -11,7 +11,12 @@ const EventDetailPage = () => {
 	// Instead using useParams() and useEffect(), we'll add loader
 
 	// 12.6 Use useLoaderData hook to get access to data
-	const data = useLoaderData();
+	// 13. In EventItem.js
+	// // BEFORE 14.9:
+	// const data = useLoaderData();
+	// // AFTER 14.9: we need to use other hook useRouteLoaderData which takes a route ID as an argument
+	// The same thing we use the same hook in EditEventPage.js
+	const data = useRouteLoaderData("event-detail");
 
 	return <EventItem event={data.event} />;
 };

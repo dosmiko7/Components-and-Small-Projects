@@ -40,11 +40,28 @@ const router = createBrowserRouter([
 						// },
 						loader: eventsLoader,
 					},
+					// 14. Adding new route definition to fetch data to EventDetailPage and also to EditEventPage. We need move eventId path here and :eventId/edit. We dont have any element property here beacuase we dont want to add any shared layout. Instead we need loader property which will be shared loader for every child in children property. So loader: eventDetailLoader will execute every time whenever we enter any route from children []
+					// 14.5 Now we can use useLoaderData in EditEventPage.js
+					{
+						path: ":eventId",
+						// 14.8 We need to add special index (with some name), to use that loader.
+						// 14.9 In EventDetailPage.js
+						id: "event-detail",
+						// WITH 14:
+						loader: eventDetailLoader,
+						children: [
+							{ index: true, element: <EventDetailPage /> /* BEFORE 14: loader: eventDetailLoader */ },
+							{ path: "edit", element: <EditEventPage /> },
+						],
+					},
+
 					// 12.4 So we need to add loader (before that import loader from EventDetailPage.js)
 					// 12.6 Then we need back to our EventDetailPage.js and import useLoaderData hook
-					{ path: ":eventId", element: <EventDetailPage />, loader: eventDetailLoader },
+					// // BEFORE 14.
+					// { path: ":eventId", element: <EventDetailPage />, loader: eventDetailLoader },
 					{ path: "new", element: <NewEventPage /> },
-					{ path: ":eventId/edit", element: <EditEventPage /> },
+					// // BEFORE 14.
+					// { path: ":eventId/edit", element: <EditEventPage /> },
 				],
 			},
 		],
