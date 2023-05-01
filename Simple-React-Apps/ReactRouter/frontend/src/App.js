@@ -1,25 +1,3 @@
-// Challenge / Exercise
-
-// 1. Add five new (dummy) page components (content can be simple <h1> elements)
-//    - HomePage
-//    - EventsPage
-//    - EventDetailPage
-//    - NewEventPage
-//    - EditEventPage
-// 2. Add routing & route definitions for these five pages
-//    - / => HomePage
-//    - /events => EventsPage
-//    - /events/<some-id> => EventDetailPage
-//    - /events/new => NewEventPage
-//    - /events/<some-id>/edit => EditEventPage
-// 3. Add a root layout that adds the <MainNavigation> component above all page components
-// 4. Add properly working links to the MainNavigation
-// 5. Ensure that the links in MainNavigation receive an "active" class when active
-// 6. Output a list of dummy events to the EventsPage
-//    Every list item should include a link to the respective EventDetailPage
-// 7. Output the ID of the selected event on the EventDetailPage
-// BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
@@ -28,6 +6,7 @@ import EventDetailPage from "./pages/EventDetailPage";
 import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventsRootLayout from "./pages/EventsRoot";
+import ErrorPage from "./pages/Error";
 
 // 1. "loader" in object with <EventsPage> allows us to to do sth before rendering a component. We're give a function which tells what we want to do/ In this example, we move fetch data from Events.js and paste it here.
 // loader's return will be available in <EventsPage> component
@@ -36,6 +15,10 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootLayout />,
+		// 8.5 Error element will be shown to the screen whenever an error is generated in any route related code (including loader)
+		// 8.7 We can also add different errorElement to other nested routes
+		// 9. If we want to recognize type of error and display it on the screen, we need change our loader (next part in EventsPage.js)
+		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <HomePage /> },
 			{
