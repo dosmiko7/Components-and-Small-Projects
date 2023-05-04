@@ -1,0 +1,17 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 2rem;
+	margin: 2rem auto;
+	text-align: center;
+}
+
+a:visited {
+	text-decoration: none;
+	color: orange;
+}
+
+button {
+	padding: 1rem 3rem;
+}
