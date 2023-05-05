@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="stylesheet"
+			href="css/style.css"
+		/>
+
+		<title>ReadSaveToFile</title>
+	</head>
+	<body>
+		<h1 class="main_heading">Read and save to file</h1>
+		<form class="form">
+			<div class="container">
+				<div class="container--name">
+					<label for="name">User name</label>
+					<input
+						id="name"
+						type="text"
+					/>
+				</div>
+				<button class="button">Send</button>
+			</div>
+			<div class="container--description">
+				<label for="description">Description for user</label>
+				<textarea
+					id="description"
+					type="text"
+				></textarea>
+			</div>
+		</form>
+		<h2>Users list from file:</h2>
+		<ul id="list"></ul>
+		<script src="js/index.js"></script>
+	</body>
+</html>
