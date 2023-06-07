@@ -14,10 +14,11 @@ export interface IQuestion {
 }
 
 export interface IState {
-	questions: IQuestion[] | undefined;
+	questions: IQuestion[];
 	status: Status;
 	index: number;
 	answer: number | null;
+	points: number;
 }
 
 export interface IAction {
@@ -25,4 +26,5 @@ export interface IAction {
 	type: string;
 	index?: number;
 	answer?: number | null;
+	points?: number;
 }

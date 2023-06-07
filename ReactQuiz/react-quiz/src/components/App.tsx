@@ -16,18 +16,26 @@ const inititalState = {
 	status: Status.Loading,
 	index: 0,
 	answer: null,
+	points: 0,
 };
 
 const reducer = (state: IState, action: IAction): IState => {
+	const question = state.questions[state.index];
+
 	switch (action.type) {
 		case "dataReceived":
-			return { ...state, questions: action.payload, status: Status.Ready };
+			return { ...state, questions: action.payload ?? [], status: Status.Ready };
 		case "dataFailed":
 			return { ...state, status: Status.Error };
 		case "start":
 			return { ...state, status: Status.Active };
 		case "newAnswer":
-			return { ...state, answer: action.answer ?? null };
+			return {
+				...state,
+				answer: action.answer ?? null,
+				points: action.answer === question.correctOption ? (state.points += question.points) : state.points,
+			};
+
 		default:
 			throw new Error("Wrong action type.");
 	}
@@ -45,7 +53,7 @@ function App() {
 		fetch(`http://localhost:8000/questions`)
 			.then((response) => response.json())
 			.then((data) => dispatch({ type: `dataReceived`, payload: data }))
-			.catch((err) => dispatch({ type: "dataFailed" }));
+			.catch(() => dispatch({ type: "dataFailed" }));
 	}, []);
 
 	return (
