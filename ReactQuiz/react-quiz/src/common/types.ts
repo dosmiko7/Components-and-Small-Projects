@@ -17,10 +17,12 @@ export interface IState {
 	questions: IQuestion[] | undefined;
 	status: Status;
 	index: number;
+	answer: number | null;
 }
 
 export interface IAction {
 	payload?: IQuestion[];
 	type: string;
 	index?: number;
+	answer?: number | null;
 }

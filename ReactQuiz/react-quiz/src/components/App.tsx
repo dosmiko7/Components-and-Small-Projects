@@ -1,20 +1,21 @@
 import { useEffect, useReducer } from "react";
 
 // Components
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Loader from "./components/Loader";
-import ErrorStatement from "./components/ErrorStatement";
-import StartScreen from "./components/StartScreen";
-import Question from "./components/Question";
+import Header from "./Header";
+import Main from "./Main";
+import Loader from "./Loader";
+import ErrorStatement from "./ErrorStatement";
+import StartScreen from "./StartScreen";
+import Question from "./Question";
 
 // Types
-import { Status, IState, IAction } from "./common/types";
+import { Status, IState, IAction } from "../common/types";
 
 const inititalState = {
 	questions: [],
 	status: Status.Loading,
 	index: 0,
+	answer: null,
 };
 
 const reducer = (state: IState, action: IAction): IState => {
@@ -25,13 +26,15 @@ const reducer = (state: IState, action: IAction): IState => {
 			return { ...state, status: Status.Error };
 		case "start":
 			return { ...state, status: Status.Active };
+		case "newAnswer":
+			return { ...state, answer: action.answer ?? null };
 		default:
 			throw new Error("Wrong action type.");
 	}
 };
 
 function App() {
-	const [{ questions, status, index }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
+	const [{ questions, status, index, answer }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
 		reducer,
 		inititalState
 	);
@@ -57,7 +60,13 @@ function App() {
 						dispatch={dispatch}
 					/>
 				)}
-				{status === Status.Active && questions && <Question question={questions[index]} />}
+				{status === Status.Active && questions && (
+					<Question
+						question={questions[index]}
+						dispatch={dispatch}
+						answer={answer}
+					/>
+				)}
 			</Main>
 		</div>
 	);
