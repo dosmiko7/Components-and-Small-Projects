@@ -1,8 +1,14 @@
-const StartScreen = () => {
+interface IStartScreenProps {
+	numQuestions: number;
+}
+
+const StartScreen = (props: IStartScreenProps) => {
+	const { numQuestions } = props;
+
 	return (
 		<div className="start">
 			<h2>Welcome to The React Quiz!</h2>
-			<p>X questions to mastery your knowledge about React</p>
+			<p>{numQuestions} questions to mastery your knowledge about React</p>
 			<button>Let's start</button>
 		</div>
 	);

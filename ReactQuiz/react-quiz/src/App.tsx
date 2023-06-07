@@ -49,6 +49,8 @@ const reducer = (state: IState, action: IAction): IState => {
 function App() {
 	const [state, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(reducer, inititalState);
 
+	const numQuestions = state.questions?.length ?? 0;
+
 	useEffect(() => {
 		fetch(`http://localhost:8000/questions`)
 			.then((response) => response.json())
