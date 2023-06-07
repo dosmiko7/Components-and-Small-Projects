@@ -10,6 +10,7 @@ import Question from "./Question";
 
 // Types
 import { Status, IState, IAction } from "../common/types";
+import NextButton from "./NextButton";
 
 const inititalState = {
 	questions: [],
@@ -35,6 +36,8 @@ const reducer = (state: IState, action: IAction): IState => {
 				answer: action.answer ?? null,
 				points: action.answer === question.correctOption ? (state.points += question.points) : state.points,
 			};
+		case "nextQuestion":
+			return { ...state, index: state.index + 1, answer: null };
 
 		default:
 			throw new Error("Wrong action type.");
@@ -69,11 +72,17 @@ function App() {
 					/>
 				)}
 				{status === Status.Active && questions && (
-					<Question
-						question={questions[index]}
-						dispatch={dispatch}
-						answer={answer}
-					/>
+					<>
+						<Question
+							question={questions[index]}
+							dispatch={dispatch}
+							answer={answer}
+						/>
+						<NextButton
+							dispatch={dispatch}
+							answer={answer}
+						/>
+					</>
 				)}
 			</Main>
 		</div>
