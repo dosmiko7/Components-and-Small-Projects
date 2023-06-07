@@ -1,35 +1,15 @@
 import { useEffect, useReducer } from "react";
 
+// Components
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
 import ErrorStatement from "./components/ErrorStatement";
 import StartScreen from "./components/StartScreen";
+import Question from "./components/Question";
 
-enum Status {
-	Loading,
-	Error,
-	Ready,
-	Active,
-	Finished,
-}
-
-interface IQuestion {
-	question: string;
-	options: string[];
-	correctOption: number;
-	points: number;
-}
-
-interface IState {
-	questions?: IQuestion[];
-	status: Status;
-}
-
-interface IAction {
-	payload?: IQuestion[];
-	type: string;
-}
+// Types
+import { Status, IState, IAction } from "./common/types";
 
 const inititalState = {
 	questions: [],
@@ -42,6 +22,8 @@ const reducer = (state: IState, action: IAction): IState => {
 			return { ...state, questions: action.payload, status: Status.Ready };
 		case "dataFailed":
 			return { ...state, status: Status.Error };
+		case "start":
+			return { ...state, status: Status.Active };
 		default:
 			throw new Error("Wrong action type.");
 	}
@@ -65,7 +47,13 @@ function App() {
 			<Main>
 				{state.status === Status.Loading && <Loader />}
 				{state.status === Status.Error && <ErrorStatement />}
-				{state.status === Status.Ready && <StartScreen numQuestions={numQuestions} />}
+				{state.status === Status.Ready && (
+					<StartScreen
+						numQuestions={numQuestions}
+						dispatch={dispatch}
+					/>
+				)}
+				{state.status === Status.Active && <Question />}
 			</Main>
 		</div>
 	);
