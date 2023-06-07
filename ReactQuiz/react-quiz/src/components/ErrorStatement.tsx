@@ -1,4 +1,4 @@
-const Error = () => {
+const ErrorStatement = () => {
 	return (
 		<p className="error">
 			<span>💥</span> There was an error fecthing questions.
@@ -6,4 +6,4 @@ const Error = () => {
 	);
 };
 
-export default Error;
+export default ErrorStatement;

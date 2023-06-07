@@ -3,6 +3,7 @@ import { useEffect, useReducer } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
+import ErrorStatement from "./components/ErrorStatement";
 
 enum Status {
 	Loading,
@@ -41,7 +42,7 @@ const reducer = (state: IState, action: IAction): IState => {
 		case "dataFailed":
 			return { ...state, status: Status.Error };
 		default:
-			throw new Error("Action unknown.");
+			throw new Error("Wrong action type.");
 	}
 };
 
@@ -58,7 +59,10 @@ function App() {
 	return (
 		<div className="app">
 			<Header />
-			<Main>{state.status === Status.Loading && <Loader />}</Main>
+			<Main>
+				{state.status === Status.Loading && <Loader />}
+				{state.status === Status.Error && <ErrorStatement />}
+			</Main>
 		</div>
 	);
 }
