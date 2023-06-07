@@ -9,7 +9,7 @@ const StartScreen = (props: IStartScreenProps) => {
 		<div className="start">
 			<h2>Welcome to The React Quiz!</h2>
 			<p>{numQuestions} questions to mastery your knowledge about React</p>
-			<button>Let's start</button>
+			<button className="btn btn-ui">Let's start</button>
 		</div>
 	);
 };

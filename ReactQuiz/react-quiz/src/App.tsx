@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
 import ErrorStatement from "./components/ErrorStatement";
+import StartScreen from "./components/StartScreen";
 
 enum Status {
 	Loading,
@@ -64,6 +65,7 @@ function App() {
 			<Main>
 				{state.status === Status.Loading && <Loader />}
 				{state.status === Status.Error && <ErrorStatement />}
+				{state.status === Status.Ready && <StartScreen numQuestions={numQuestions} />}
 			</Main>
 		</div>
 	);
