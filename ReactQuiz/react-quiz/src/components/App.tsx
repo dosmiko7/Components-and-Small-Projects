@@ -11,6 +11,7 @@ import Question from "./Question";
 // Types
 import { Status, IState, IAction } from "../common/types";
 import NextButton from "./NextButton";
+import Progress from "./Progress";
 
 const inititalState = {
 	questions: [],
@@ -45,12 +46,13 @@ const reducer = (state: IState, action: IAction): IState => {
 };
 
 function App() {
-	const [{ questions, status, index, answer }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
+	const [{ questions, status, index, answer, points }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
 		reducer,
 		inititalState
 	);
 
 	const numQuestions = questions?.length ?? 0;
+	const maxPossiblePoints = questions.reduce((prev, curr) => prev + curr.points, 0);
 
 	useEffect(() => {
 		fetch(`http://localhost:8000/questions`)
@@ -73,6 +75,13 @@ function App() {
 				)}
 				{status === Status.Active && questions && (
 					<>
+						<Progress
+							index={index}
+							numQuestions={numQuestions}
+							points={points}
+							maxPossiblePoints={maxPossiblePoints}
+							answer={answer}
+						/>
 						<Question
 							question={questions[index]}
 							dispatch={dispatch}
