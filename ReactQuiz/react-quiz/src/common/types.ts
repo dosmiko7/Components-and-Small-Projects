@@ -14,11 +14,13 @@ export interface IQuestion {
 }
 
 export interface IState {
-	questions?: IQuestion[];
+	questions: IQuestion[] | undefined;
 	status: Status;
+	index: number;
 }
 
 export interface IAction {
 	payload?: IQuestion[];
 	type: string;
+	index?: number;
 }

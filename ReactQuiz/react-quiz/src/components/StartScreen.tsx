@@ -1,3 +1,4 @@
+// Types
 import { IAction } from "../common/types";
 
 interface IStartScreenProps {

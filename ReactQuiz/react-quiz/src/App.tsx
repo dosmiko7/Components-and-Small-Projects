@@ -14,6 +14,7 @@ import { Status, IState, IAction } from "./common/types";
 const inititalState = {
 	questions: [],
 	status: Status.Loading,
+	index: 0,
 };
 
 const reducer = (state: IState, action: IAction): IState => {
@@ -30,9 +31,12 @@ const reducer = (state: IState, action: IAction): IState => {
 };
 
 function App() {
-	const [state, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(reducer, inititalState);
+	const [{ questions, status, index }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
+		reducer,
+		inititalState
+	);
 
-	const numQuestions = state.questions?.length ?? 0;
+	const numQuestions = questions?.length ?? 0;
 
 	useEffect(() => {
 		fetch(`http://localhost:8000/questions`)
@@ -45,15 +49,15 @@ function App() {
 		<div className="app">
 			<Header />
 			<Main>
-				{state.status === Status.Loading && <Loader />}
-				{state.status === Status.Error && <ErrorStatement />}
-				{state.status === Status.Ready && (
+				{status === Status.Loading && <Loader />}
+				{status === Status.Error && <ErrorStatement />}
+				{status === Status.Ready && (
 					<StartScreen
 						numQuestions={numQuestions}
 						dispatch={dispatch}
 					/>
 				)}
-				{state.status === Status.Active && <Question />}
+				{status === Status.Active && questions && <Question question={questions[index]} />}
 			</Main>
 		</div>
 	);

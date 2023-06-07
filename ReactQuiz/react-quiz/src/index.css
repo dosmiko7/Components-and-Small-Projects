@@ -62,6 +62,18 @@ h2 {
 	margin-bottom: 2rem;
 }
 
+h3 {
+	font-size: 2.4rem;
+	font-weight: 600;
+	margin-bottom: 4rem;
+}
+
+h4 {
+	font-size: 2.2rem;
+	font-weight: 600;
+	margin-bottom: 2.4rem;
+}
+
 .start {
 	display: flex;
 	flex-direction: column;
@@ -126,6 +138,29 @@ h2 {
 
 .btn-ui {
 	float: right;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+	margin-bottom: 3.2rem;
+}
+
+.btn-option {
+	width: 100%;
+	text-align: left;
+}
+
+.btn-option.correct {
+	background-color: var(--color-theme);
+	border: 2px solid var(--color-theme);
+	color: var(--color-light);
+}
+.btn-option.wrong {
+	background-color: var(--color-accent);
+	border: 2px solid var(--color-accent);
+	color: var(--color-darkest);
 }
 
 @keyframes loader {
