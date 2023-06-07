@@ -3,26 +3,49 @@ import { useEffect, useReducer } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
+enum Status {
+	Loading,
+	Error,
+	Ready,
+	Active,
+	Finished,
+}
+
+interface IQuestion {
+	question: string;
+	options: string[];
+	correctOption: number;
+	points: number;
+}
+
+interface IState {
+	questions?: IQuestion[];
+	status: Status;
+}
+
+interface IAction {
+	payload?: IQuestion[];
+	type: string;
+}
+
 const inititalState = {
 	questions: [],
-
-	// loading, error, ready, active, finished
-	status: "loading",
+	status: Status.Loading,
 };
 
-const reducer = (state, action) => {
+const reducer = (state: IState, action: IAction): IState => {
 	switch (action.type) {
 		case "dataReceived":
-			return { ...state, questions: action.payload, status: "ready" };
+			return { ...state, questions: action.payload, status: Status.Ready };
 		case "dataFailed":
-			return { ...state, status: "error" };
+			return { ...state, status: Status.Error };
 		default:
 			throw new Error("Action unknown.");
 	}
 };
 
 function App() {
-	const [state, dispatch] = useReducer(reducer, inititalState);
+	const [state, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(reducer, inititalState);
 
 	useEffect(() => {
 		fetch(`http://localhost:8000/questions`)
