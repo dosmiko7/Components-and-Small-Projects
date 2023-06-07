@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Loader from "./components/Loader";
 
 enum Status {
 	Loading,
@@ -57,7 +58,7 @@ function App() {
 	return (
 		<div className="app">
 			<Header />
-			<Main></Main>
+			<Main>{state.status === Status.Loading && <Loader />}</Main>
 		</div>
 	);
 }
