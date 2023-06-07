@@ -1,4 +1,5 @@
 import { IQuestion } from "../common/types";
+import OptionsList from "./OptionsList";
 
 interface IQuestionProps {
 	question: IQuestion;
@@ -10,16 +11,7 @@ const Question = (props: IQuestionProps) => {
 	return (
 		<div>
 			<h4>{question.question}</h4>
-			<div className="options">
-				{question.options.map((option) => (
-					<button
-						className="btn btn-option"
-						key={option}
-					>
-						option
-					</button>
-				))}
-			</div>
+			<OptionsList question={question} />
 		</div>
 	);
 };
