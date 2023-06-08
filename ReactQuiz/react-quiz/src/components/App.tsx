@@ -54,10 +54,8 @@ const reducer = (state: IState, action: IAction): IState => {
 };
 
 function App() {
-	const [{ questions, status, index, answer, points }, dispatch]: [IState, React.Dispatch<IAction>] = useReducer(
-		reducer,
-		inititalState
-	);
+	const [{ questions, status, index, answer, points, highscore }, dispatch]: [IState, React.Dispatch<IAction>] =
+		useReducer(reducer, inititalState);
 
 	const numQuestions = questions?.length ?? 0;
 	const maxPossiblePoints = questions.reduce((prev, curr) => prev + curr.points, 0);
@@ -107,6 +105,7 @@ function App() {
 					<FinishScreen
 						points={points}
 						maxPossiblePoints={maxPossiblePoints}
+						highscore={highscore}
 					/>
 				)}
 			</Main>

@@ -1,10 +1,11 @@
 interface IFinishScreenProps {
 	points: number;
 	maxPossiblePoints: number;
+	highscore: number;
 }
 
 const FinishScreen = (props: IFinishScreenProps) => {
-	const { points, maxPossiblePoints } = props;
+	const { points, maxPossiblePoints, highscore } = props;
 
 	const percentage = (points / maxPossiblePoints) * 100;
 
@@ -19,7 +20,7 @@ const FinishScreen = (props: IFinishScreenProps) => {
 				<span>{emoji}</span>You finished with <strong>{points}</strong> out of {maxPossiblePoints} (
 				{Math.ceil(percentage)}%)
 			</p>
-			<p className="highscore">(Highscore: X points)</p>
+			<p className="highscore">(Highscore: {highscore} points)</p>
 		</div>
 	);
 };
