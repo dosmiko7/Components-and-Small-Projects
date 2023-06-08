@@ -12,6 +12,7 @@ import Question from "./Question";
 import { Status, IState, IAction } from "../common/types";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
+import FinishScreen from "./FinishScreen";
 
 const inititalState = {
 	questions: [],
@@ -92,6 +93,12 @@ function App() {
 							answer={answer}
 						/>
 					</>
+				)}
+				{status === Status.Finished && (
+					<FinishScreen
+						points={points}
+						maxPossiblePoints={maxPossiblePoints}
+					/>
 				)}
 			</Main>
 		</div>
