@@ -11,7 +11,7 @@ const FinishScreen = (props: IFinishScreenProps) => {
 	return (
 		<div>
 			<p className="result">
-				You finished with <strong>{points}</strong> out of {maxPossiblePoints} ({Math.ceil(percentage)})
+				You finished with <strong>{points}</strong> out of {maxPossiblePoints} ({Math.ceil(percentage)}%)
 			</p>
 		</div>
 	);
