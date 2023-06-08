@@ -10,7 +10,7 @@ const Progress = (props: IProgressProps) => {
 	const { index, numQuestions, points, maxPossiblePoints, answer } = props;
 
 	return (
-		<header>
+		<header className="progress">
 			<progress
 				max={numQuestions}
 				value={index + Number(answer !== null)}
