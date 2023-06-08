@@ -20,6 +20,7 @@ export interface IState {
 	answer: number | null;
 	points: number;
 	highscore: number;
+	secondsRemaing: number;
 }
 
 export interface IAction {
@@ -29,4 +30,5 @@ export interface IAction {
 	answer?: number | null;
 	points?: number;
 	highscore?: number;
+	secondsRemaing?: number;
 }
