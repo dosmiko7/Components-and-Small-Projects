@@ -1,11 +1,14 @@
+import { IAction } from "../common/types";
+
 interface IFinishScreenProps {
 	points: number;
 	maxPossiblePoints: number;
 	highscore: number;
+	dispatch: React.Dispatch<IAction>;
 }
 
 const FinishScreen = (props: IFinishScreenProps) => {
-	const { points, maxPossiblePoints, highscore } = props;
+	const { points, maxPossiblePoints, highscore, dispatch } = props;
 
 	const percentage = (points / maxPossiblePoints) * 100;
 
@@ -21,6 +24,12 @@ const FinishScreen = (props: IFinishScreenProps) => {
 				{Math.ceil(percentage)}%)
 			</p>
 			<p className="highscore">(Highscore: {highscore} points)</p>
+			<button
+				className="btn btn-ui"
+				onClick={() => dispatch({ type: "restart" })}
+			>
+				Restart
+			</button>
 		</div>
 	);
 };

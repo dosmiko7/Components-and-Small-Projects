@@ -47,7 +47,8 @@ const reducer = (state: IState, action: IAction): IState => {
 				status: Status.Finished,
 				highscore: state.points > state.highscore ? state.points : state.highscore,
 			};
-
+		case "restart":
+			return { ...inititalState, questions: state.questions, status: Status.Ready };
 		default:
 			throw new Error("Wrong action type.");
 	}
@@ -106,6 +107,7 @@ function App() {
 						points={points}
 						maxPossiblePoints={maxPossiblePoints}
 						highscore={highscore}
+						dispatch={dispatch}
 					/>
 				)}
 			</Main>
