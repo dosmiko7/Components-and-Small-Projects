@@ -3,20 +3,33 @@ import { IAction } from "../common/types";
 interface INextButtonProps {
 	dispatch: React.Dispatch<IAction>;
 	answer: number | null;
+	numQuestions: number;
+	index: number;
 }
 
 const NextButton = (props: INextButtonProps) => {
-	const { dispatch, answer } = props;
+	const { dispatch, answer, numQuestions, index } = props;
 
 	if (answer === null) return null;
-	return (
-		<button
-			className="btn btn-ui"
-			onClick={() => dispatch({ type: "nextQuestion" })}
-		>
-			Next
-		</button>
-	);
+	if (index < numQuestions - 1) {
+		return (
+			<button
+				className="btn btn-ui"
+				onClick={() => dispatch({ type: "nextQuestion" })}
+			>
+				Next
+			</button>
+		);
+	} else {
+		return (
+			<button
+				className="btn btn-ui"
+				onClick={() => dispatch({ type: "finish" })}
+			>
+				Finish
+			</button>
+		);
+	}
 };
 
 export default NextButton;

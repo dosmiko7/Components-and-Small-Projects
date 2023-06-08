@@ -40,6 +40,8 @@ const reducer = (state: IState, action: IAction): IState => {
 			};
 		case "nextQuestion":
 			return { ...state, index: state.index + 1, answer: null };
+		case "finish":
+			return { ...state, status: Status.Finished };
 
 		default:
 			throw new Error("Wrong action type.");
@@ -91,6 +93,8 @@ function App() {
 						<NextButton
 							dispatch={dispatch}
 							answer={answer}
+							numQuestions={numQuestions}
+							index={index}
 						/>
 					</>
 				)}
