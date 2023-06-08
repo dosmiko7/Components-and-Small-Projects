@@ -19,6 +19,7 @@ const FinishScreen = (props: IFinishScreenProps) => {
 				<span>{emoji}</span>You finished with <strong>{points}</strong> out of {maxPossiblePoints} (
 				{Math.ceil(percentage)}%)
 			</p>
+			<p className="highscore">(Highscore: X points)</p>
 		</div>
 	);
 };

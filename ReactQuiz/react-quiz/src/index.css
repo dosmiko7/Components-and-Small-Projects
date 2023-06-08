@@ -183,6 +183,12 @@ h4 {
 	margin-right: 4px;
 }
 
+.highscore {
+	font-size: 1.8rem;
+	text-align: center;
+	margin-bottom: 4.8rem;
+}
+
 @keyframes loader {
 	20% {
 		background-position: 0% 0%, 50% 50%, 100% 50%;

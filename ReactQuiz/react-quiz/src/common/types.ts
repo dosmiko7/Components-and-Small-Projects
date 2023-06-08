@@ -19,6 +19,7 @@ export interface IState {
 	index: number;
 	answer: number | null;
 	points: number;
+	highscore: number;
 }
 
 export interface IAction {
@@ -27,4 +28,5 @@ export interface IAction {
 	index?: number;
 	answer?: number | null;
 	points?: number;
+	highscore?: number;
 }

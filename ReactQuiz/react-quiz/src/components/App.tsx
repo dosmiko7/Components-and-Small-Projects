@@ -20,6 +20,7 @@ const inititalState = {
 	index: 0,
 	answer: null,
 	points: 0,
+	highscore: 0,
 };
 
 const reducer = (state: IState, action: IAction): IState => {
@@ -41,7 +42,11 @@ const reducer = (state: IState, action: IAction): IState => {
 		case "nextQuestion":
 			return { ...state, index: state.index + 1, answer: null };
 		case "finish":
-			return { ...state, status: Status.Finished };
+			return {
+				...state,
+				status: Status.Finished,
+				highscore: state.points > state.highscore ? state.points : state.highscore,
+			};
 
 		default:
 			throw new Error("Wrong action type.");
